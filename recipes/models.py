@@ -48,6 +48,9 @@ class RecipeIngredient(models.Model):
     quantity = models.CharField(max_length=5)
     unit = models.CharField(max_length=20, choices=INGREDIENT_UNIT_CHOICES)
 
+    def __unicode__(self):
+        return u'%s on %s' % (self.ingredient, self.recipe)
+
 
 class Review(models.Model):
     user = models.ForeignKey(User, related_name='reviews')
