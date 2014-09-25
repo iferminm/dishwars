@@ -32,7 +32,7 @@ class Step(models.Model):
     recipe = models.ForeignKey(Recipe)
 
 
-class IngredientRecipe(models.Model):
+class RecipeIngredient(models.Model):
     ingredient = models.ForeignKey(Ingredient)
     recipe = models.ForeignKey(Recipe)
     quantity = models.CharField(max_length=5)
