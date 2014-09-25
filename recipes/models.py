@@ -11,6 +11,9 @@ class Ingredient(models.Model):
     photo = models.ImageField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
 
+    def __unicode__(self):
+        return u'%s' % self.name
+
 
 class Recipe(models.Model):
     author = models.ForeignKey(User)
@@ -23,13 +26,20 @@ class Recipe(models.Model):
     challenge_rate = models.PositiveIntegerField()
     rating = models.PositiveIntegerField(default=0)
 
+    def __unicode__(self):
+        return u'%s by %s' % (self.dish.name, self.author.get_full_name())
+
 
 class Step(models.Model):
     photo = models.ImageField(blank=True, null=True)
     directions = models.TextField()
     time = models.PositiveIntegerField()
     unit = models.CharField(max_length=20, choices=TIME_UNIT_CHOICES)
+    order = models.PositiveIntegerField()
     recipe = models.ForeignKey(Recipe)
+
+    def __unicode__(self):
+        return u'%s %s' % (self.order, self.recipe)
 
 
 class RecipeIngredient(models.Model):
