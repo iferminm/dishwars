@@ -5,14 +5,14 @@ class Cuisine(models.Model):
     name = models.CharField(max_length=160)
 
     def __unicode__(self):
-        return u'%s' % self.name
+        return u'{cuisine}'.format(cuisine=self.name)
 
 
 class MealType(models.Model):
     name = models.CharField(max_length=150)
 
     def __unicode__(self):
-        return u'%s' % self.name
+        return u'{mealtype}'.format(mealtype=self.name)
 
 
 class Dish(models.Model):
@@ -21,5 +21,5 @@ class Dish(models.Model):
     usually_taken = models.ManyToManyField(MealType, related_name='dishes')
 
     def __unicode__(self):
-        return u'%s' % self.name
+        return u'{dish_name}'.format(dish_name=self.name)
 
