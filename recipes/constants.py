@@ -16,4 +16,5 @@ INGREDIENT_UNIT_CHOICES = (
     ('litre', 'Litres'),
     ('gram', 'Grams'),
     ('kilo', 'Kilos'),
+    ('units', 'Units'),
 )
