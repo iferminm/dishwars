@@ -20,6 +20,9 @@ class Dish(models.Model):
     cuisine = models.ForeignKey(Cuisine, related_name='dishes')
     usually_taken = models.ManyToManyField(MealType, related_name='dishes')
 
+    class Meta:
+        verbose_name_plural = 'Dishes'
+
     def __unicode__(self):
         return u'{dish_name}'.format(dish_name=self.name)
 

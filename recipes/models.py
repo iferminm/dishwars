@@ -59,5 +59,8 @@ class Review(models.Model):
     points = models.SmallIntegerField()
     comment = models.TextField(null=True, blank=True)
 
+    class Meta:
+        unique_together = ('user', 'recipe')
+
     def __unicode__(self):
         return u'{user} on {recipe}'.format(user=self.user.get_full_name(), recipe=self.recipe)
