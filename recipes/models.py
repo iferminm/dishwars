@@ -25,6 +25,8 @@ class Recipe(models.Model):
     )
     challenge_rate = models.PositiveIntegerField()
     rating = models.PositiveIntegerField(default=0)
+    created_on = models.DateTimeField(auto_now_add=True)
+    last_update = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
         return u'{dish} by {author}'.format(dish=self.dish.name, 
@@ -54,6 +56,8 @@ class RecipeIngredient(models.Model):
 
 
 class Review(models.Model):
+    created_on = models.DateTimeField(auto_now_add=True)
+    last_update = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User, related_name='reviews')
     recipe = models.ForeignKey(Recipe, related_name='reviews')
     points = models.SmallIntegerField()
